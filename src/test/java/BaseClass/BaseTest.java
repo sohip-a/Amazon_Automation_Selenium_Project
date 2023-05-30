@@ -14,12 +14,15 @@ import org.testng.annotations.Test;
 public class BaseTest {
     private WebDriver driver;
     protected HomePage homePage;
+
     @BeforeTest
     public void setUp() {
         driver = new ChromeDriver();
-        driver.navigate().to("https://www.amazon.eg/");
+        driver.navigate().to("https://www.amazon.eg/-/en/");
+        driver.manage().window().maximize();
         homePage = new HomePage(driver);
     }
+
     @BeforeClass
     public void Login(){
         LoginPage loginPage= homePage.clickSignIn();
@@ -32,6 +35,6 @@ public class BaseTest {
 
     @AfterTest
     public void closeBrowser(){
-       driver.quit();
+      // driver.quit();
     }
 }
